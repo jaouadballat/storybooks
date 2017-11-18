@@ -1,6 +1,6 @@
 module.exports = {
 	twitter: {
-		consumerKey: "bvIzmWFBP87KNecxioeIp4xOH",
-		consumerSecret: "GbfuFguZ0m4iQWf6W4lhPeIleCOL1RuKP4DxfBDrb7wqltBMve"
+		consumerKey: "PjfZrm2j9ANRUmWMBNviJRYgG",
+		consumerSecret: "lr3mZQ52AwbbAAaCDmcJNA7XU2RJRcnWxLHH4eVrWRkU9MdFPm"
 	}
 }
