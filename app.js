@@ -10,6 +10,7 @@ var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var stories = require('./routes/stories');
 
 var app = express();
 
@@ -45,10 +46,19 @@ var db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+app.use(function(req, res, next){
+  console.log(req.user)
+  res.locals.user = req.user;
+  next();
+});
+
 app.use('/', index);
 app.use('/users', users);
+app.use('/stories', stories);
 
 app.locals.title = "Stories"
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
