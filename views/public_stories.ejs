@@ -1,0 +1,24 @@
+<% include partials/header.ejs %>
+    <div class="container main">
+    	<h3>Dashboard</h3>
+    	<div class="row">
+    		<% stories.map(story => { %>
+    		<div class="col m4">
+    			  <div class="card darken-1">
+		            <div class="card-content">
+		              <span class="card-title"><%= story.title %></span>
+		              <p><%- story.body.substr(0, 100) %> ....</p>
+                        <div class="chip" style="margin-top: 10px">
+                            <img src="<%= story.user.image %>">
+                            <%= story.user.username %>
+                        </div>
+		            </div>
+		            <div class="card-action">
+		              <a class="waves-effect waves-light btn red" href="/stories/show/<%= story._id %>">Read More</a>
+		            </div>
+		          </div>
+    		</div>
+    		<% }) %>
+    	</div>
+    </div>
+<% include partials/footer.ejs %>

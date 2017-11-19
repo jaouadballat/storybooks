@@ -1,0 +1,31 @@
+<% include partials/header.ejs %>
+    <div class="container main">
+    	<h3 class="center">Add Story</h3>
+    	<div class="row">
+    		<form class="col s8 offset-s2" action="/stories/update/<%= story._id%>" method="post">
+		        <div class="input-field">
+		          <input type="text" class="validate" name="title" value="<%= story.title %>">
+		          <label for="title">Title: </label>
+		        </div>
+		        <div class="input-field">
+				    <select name="status">
+				      <option value="public">Public</option>
+				      <option value="private">Private</option>
+				    </select>
+				    <label>Status: </label>
+				</div>
+				<p>
+			      <input type="checkbox" id="comments"  name="allowcomments" checked="checked" />
+			      <label for="comments">Allow Comments</label>
+			    </p>
+			     <div class="input-field">
+		          <textarea id="textarea1" class="materialize-textarea" name="body"><%= story.body %></textarea>
+		          <label for="textarea1">Tell us a Story</label>
+		        </div>
+		        <div class="input-field">
+		          <input type="submit" value="Update Story" class="waves-effect waves-light btn">
+		        </div>
+    		</form>
+    	</div>
+    </div>
+<% include partials/footer.ejs %>
