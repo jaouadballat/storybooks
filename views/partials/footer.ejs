@@ -1,3 +1,8 @@
+ <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red" href="/stories/add">
+      <i class="large material-icons">add</i>
+    </a>
+</div>
 <footer class="page-footer grey darken-3">
   <div class="container">
     <div class="row">
@@ -9,7 +14,7 @@
         <h5 class="white-text">Links</h5>
         <ul>
           <li><a class="grey-text text-lighten-3" href="#!">Public Stories</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Dashboard</a></li>
+          <li><a class="grey-text text-lighten-3" href="/stories/dashboard">Dashboard</a></li>
         </ul>
       </div>
     </div>
@@ -25,14 +30,19 @@
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
   <script>
   	(function($){
 	  $(function(){
 
 	    $('.button-collapse').sideNav();
-
-	  }); // end of document ready
-	})(jQuery); // end of jQuery name space
+      
+      $('select').material_select();
+     $('textarea').froalaEditor({
+      toolbarButtons: ['undo', 'redo' , 'bold','italic', 'underline', 'fontFamily', 'fontSize', ]
+     })
+	  }); 
+	})(jQuery); 
   </script>
 </body>
 </html>

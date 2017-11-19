@@ -7,4 +7,8 @@ router.get('/dashboard',auth, function(req, res, next) {
   res.render('dashboard');
 });
 
+router.get('/add', function(req, res, next) {
+  res.render('add_story');
+});
+
 module.exports = router;
