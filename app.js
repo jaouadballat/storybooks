@@ -47,7 +47,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(function(req, res, next){
-  console.log(req.user)
   res.locals.user = req.user;
   next();
 });

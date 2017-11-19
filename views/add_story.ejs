@@ -2,24 +2,24 @@
     <div class="container main">
     	<h3 class="center">Add Story</h3>
     	<div class="row">
-    		<form class="col s8 offset-s2" action="">
+    		<form class="col s8 offset-s2" action="/stories" method="post">
 		        <div class="input-field">
-		          <input type="text" class="validate">
+		          <input type="text" class="validate" name="title">
 		          <label for="title">Title: </label>
 		        </div>
 		        <div class="input-field">
-				    <select>
-				      <option value="1">Public</option>
-				      <option value="2">Private</option>
+				    <select name="status">
+				      <option value="public">Public</option>
+				      <option value="private">Private</option>
 				    </select>
 				    <label>Status: </label>
 				</div>
 				<p>
-			      <input type="checkbox" id="comments" />
+			      <input type="checkbox" id="comments"  name="allowcomments" checked="checked" />
 			      <label for="comments">Allow Comments</label>
 			    </p>
 			     <div class="input-field">
-		          <textarea id="textarea1" class="materialize-textarea"></textarea>
+		          <textarea id="textarea1" class="materialize-textarea" name="body"></textarea>
 		          <label for="textarea1">Tell us a Story</label>
 		        </div>
 		        <div class="input-field">
