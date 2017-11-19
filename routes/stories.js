@@ -109,4 +109,14 @@ router.post('/update/:id',auth, function(req, res){
 	});
 });
 
+router.post('/delete/:id', function(req, res){
+	Story.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			console.log(err)
+		}else{
+			res.redirect('/stories/dashboard');
+		}
+	})
+})
+
 module.exports = router;

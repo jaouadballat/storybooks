@@ -18,7 +18,9 @@
 					<td><%= story.date.toDateString() %></td>
 					<td><%= story.status %></td>
 					<td><a href="/stories/edit/<%= story._id %>" class="btn waves-effect waves-light"><i class="left material-icons">mode_edit</i> Edit</a></td>
-					<td><a href="" class="btn waves-effect waves-light red"><i class="left material-icons">remove_circle</i> Delete</a></td>
+					<td><form action="/stories/delete/<%= story._id %>" method="post">
+						<button type="submit"  class="btn waves-effect waves-light red"><i class="left material-icons">remove_circle</i>Delete</button>
+					</form></td>
     		</tr>
     		<% }) %>
     	</tbody>
