@@ -47,20 +47,23 @@ router.get('/add', function(req, res, next) {
 });
 
 router.get('/show/:id', function(req, res){
-	Story.findById(req.params.id).populate('user').exec(function(err, story){
-		if(err){
-			console.log(err)
-		}else{
-			res.render('show', {
-				story: story
-			});
-		}
-	});
+	Story.findById(req.params.id)
+		.populate('user')
+		.populate('comments.user')
+		.exec(function(err, story){
+			if(err){
+				console.log(err)
+			}else{
+				res.render('show', {
+					story: story
+				});
+			}
+		});
 });
 
 router.post('/', function(req, res, next) {
 	let allowComments;
-	if (req.body.allowComments) {
+	if (req.body.allowcomments) {
 	    allowComments = true
 	} else {
 	    allowComments = false
@@ -88,7 +91,7 @@ router.post('/update/:id',auth, function(req, res){
 			console.log(err)
 		}else{
 			let allowComments;
-			if (req.body.allowComments) {
+			if (req.body.allowcomments) {
 			    allowComments = true
 			} else {
 			    allowComments = false
@@ -116,7 +119,29 @@ router.post('/delete/:id', function(req, res){
 		}else{
 			res.redirect('/stories/dashboard');
 		}
+	});
+});
+
+router.post('/comments/:id', function(req, res){
+	Story.findById(req.params.id, function(err, story){
+		let comment = {
+			bodyComment: req.body.bodyComment,
+			user: req.user._id
+		}
+		story.comments.push(comment)
+		story.save(function(err){
+			if(err){
+				console.log(err)
+			}else{
+				res.redirect(`/stories/show/${ story._id }`)
+			}
+		})
 	})
 })
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = router;

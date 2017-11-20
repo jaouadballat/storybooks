@@ -21,12 +21,19 @@
     <div class="nav-wrapper container">
       <a href="/" class="brand-logo center">StoryBooks</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right">
-        <li><a href="/stories/public">Public Stories <i class="fa fa-sign-in"></i></a></li>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/stories/public">Public Stories</a></li>
+        <% if(user) { %>
+        <li><a href="/stories/logout">Logout <i class="fa fa-sign-in"></i></a></li>
+        <%}%>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li style="margin-top: 5px"><a href="sass.html"><img src="/images/twitter.png" width="100%"></i></a></li>
-        <li><a href="sass.html">Public Stories <i class="fa fa-sign-in"></i></a></li>
+        <li><a href="/stories/public"><i class="fa fa-th-list"></i>Public Stories</a></li>
+        <% if(user) { %>
+        <li><a href="/stories/dashboard"><i class="fa  fa-address-card-o"></i>Dashboard</a></li>
+        <li><a href="/stories/logout">Logout <i class="fa fa-sign-in"></i></a></li>
+        <%}%>
       </ul>
     </div>
   </nav>

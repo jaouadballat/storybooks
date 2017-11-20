@@ -10,6 +10,47 @@
 		              <p><%- story.body %></p>
 		            </div>
 		          </div>
+		          <% if(story.allowcomments){ %>
+		          <div class="card darken-1">
+		            <div class="card-content">
+		              <span class="card-title">Comments: </span>
+		                 <% story.comments.map(comment => { %>
+		              <div class="col s12">
+							        <div class="card-panel grey lighten-5 z-depth-1">
+							          <div class="row valign-wrapper">
+							            <div class="col s2">
+									            <img src="<%= comment.user.image %>" class="circle responsive-img">
+									            <strong><%= comment.user.username %></strong>
+							            </div>
+							            <div class="col s10">
+							              <span class="black-text">
+							                <strong><%- comment.date.toDateString() %></strong>
+							                <div class="divider"></div>
+							                <p><%- comment.bodyComment %></p>
+							              </span>
+							            </div>
+							          </div>
+							        </div>
+						      </div>
+		                 <% }) %>
+						<% if(user){ %>
+						<div class="row">
+								<form action="/stories/comments/<%= story._id %>" method="post" class="col s12">
+								<div class="row">
+									<div class="input-field col s12">
+							          <textarea id="textarea" name="bodyComment" class="materialize-textarea"></textarea>
+							          <label for="textarea">Leave a comment</label>
+							          <input type="submit" value="Comment" class="btn red">
+							        </div>
+								</div>
+							</form>
+						</div>
+						<% }else{ %>
+							<p>Please <a href="/users/auth/twitter">Sign in</a> to leave a comments</p>
+						<%}%>
+		            </div>
+		          </div>
+		          <% } %>
     		</div>
     		<div class="col m4">
     			<div class="card">
